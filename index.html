@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Encanto Repostería</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo">🎂</span>
+                <span class="brand-name">Dulce Encanto</span>
+            </div>
+            
+            <!-- Navegación Desktop -->
+            <div class="nav-links" id="navLinks">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#productos" class="nav-link">Productos</a>
+                <a href="#nosotros" class="nav-link">Nosotros</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </div>
+
+            <div class="nav-actions">
+                <!-- Botón del carrito -->
+                <button class="cart-btn" id="cartBtn" onclick="abrirCarrito()">
+                    🛍️
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+
+                <!-- Botón menú móvil -->
+                <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+                    <span class="menu-icon">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#inicio" class="nav-link" onclick="cerrarMenu()">Inicio</a>
+            <a href="#productos" class="nav-link" onclick="cerrarMenu()">Productos</a>
+            <a href="#nosotros" class="nav-link" onclick="cerrarMenu()">Nosotros</a>
+            <a href="#contacto" class="nav-link" onclick="cerrarMenu()">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-decoration-1"></div>
+        <div class="hero-decoration-2"></div>
+        <div class="hero-content">
+            <div class="hero-icon">❤️</div>
+            <h1>Dulce Encanto Repostería</h1>
+            <p class="hero-text">
+                Creamos momentos dulces e inolvidables con nuestros pasteles artesanales 
+                hechos con amor y los mejores ingredientes.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToProductos()">Ver Menú</button>
+                <button class="btn btn-secondary" onclick="abrirContacto()">Hacer Pedido</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Productos -->
+    <section id="productos" class="productos-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Productos</h2>
+                <p>Cada creación es única y hecha con dedicación para endulzar tus momentos especiales</p>
+            </div>
+
+            <div class="productos-layout">
+                <!-- Filtros -->
+                <aside class="filtros-sidebar">
+                    <div class="filtros-header">
+                        <h3>Filtros</h3>
+                        <button class="btn-limpiar" onclick="limpiarFiltros()">Limpiar</button>
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <h4>Categoría</h4>
+                        <label class="filtro-option">
+                            <input type="radio" name="categoria" value="todos" checked onchange="aplicarFiltros()">
+                            <span>Todos</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="categoria" value="pasteles" onchange="aplicarFiltros()">
+                            <span>Pasteles</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="categoria" value="cupcakes" onchange="aplicarFiltros()">
+                            <span>Cupcakes</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="categoria" value="macarons" onchange="aplicarFiltros()">
+                            <span>Macarons</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="categoria" value="especiales" onchange="aplicarFiltros()">
+                            <span>Especiales</span>
+                        </label>
+                    </div>
+
+                    <div class="filtro-grupo">
+                        <h4>Rango de Precio</h4>
+                        <label class="filtro-option">
+                            <input type="radio" name="precio" value="todos" checked onchange="aplicarFiltros()">
+                            <span>Todos</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="precio" value="0-30" onchange="aplicarFiltros()">
+                            <span>Menos de $30</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="precio" value="30-50" onchange="aplicarFiltros()">
+                            <span>$30 - $50</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="precio" value="50-100" onchange="aplicarFiltros()">
+                            <span>$50 - $100</span>
+                        </label>
+                        <label class="filtro-option">
+                            <input type="radio" name="precio" value="100+" onchange="aplicarFiltros()">
+                            <span>Más de $100</span>
+                        </label>
+                    </div>
+                </aside>
+
+                <!-- Grid de productos -->
+                <div class="productos-grid" id="productosGrid">
+                    <!-- Los productos se generan con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="nosotros-section">
+        <div class="container">
+            <div class="nosotros-grid">
+                <div class="nosotros-content">
+                    <h2>Nuestra Historia</h2>
+                    <p>
+                        Desde hace más de 10 años, hemos estado endulzando la vida de nuestros clientes 
+                        con pasteles y postres hechos con los mejores ingredientes y mucho amor.
+                    </p>
+                    <p>
+                        Cada receta es cuidadosamente elaborada para crear momentos inolvidables en 
+                        tus celebraciones más importantes.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">10+</div>
+                            <div class="stat-label">Años</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">5000+</div>
+                            <div class="stat-label">Pasteles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Artesanal</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nosotros-image">
+                    <img src="https://images.unsplash.com/photo-1621794598988-d7f895197dc8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Pastel decorado">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contacto-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contáctanos</h2>
+                <p>Estamos listos para hacer realidad tus sueños más dulces</p>
+            </div>
+
+            <div class="contacto-grid">
+                <div class="contacto-card" onclick="abrirContacto()">
+                    <div class="contacto-icon">📞</div>
+                    <h3>Teléfono</h3>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="contacto-card" onclick="abrirContacto()">
+                    <div class="contacto-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>info@dulceencanto.com</p>
+                </div>
+                <div class="contacto-card" onclick="abrirContacto()">
+                    <div class="contacto-icon">📍</div>
+                    <h3>Ubicación</h3>
+                    <p>Calle Dulce 123, Ciudad</p>
+                </div>
+            </div>
+
+            <div class="contacto-btn-container">
+                <button class="btn btn-primary" onclick="abrirContacto()">Enviar mensaje</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-brand">
+                        <span class="logo">🎂</span>
+                        <span class="brand-name">Dulce Encanto</span>
+                    </div>
+                    <p>Endulzando momentos desde 2014</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Productos</h4>
+                    <ul>
+                        <li><a href="#">Pasteles</a></li>
+                        <li><a href="#">Cupcakes</a></li>
+                        <li><a href="#">Galletas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Sobre nosotros</a></li>
+                        <li><a href="#">Pedidos personalizados</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">👍</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Dulce Encanto Repostería. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Producto -->
+    <div class="modal" id="modalProducto">
+        <div class="modal-overlay" onclick="cerrarModalProducto()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="cerrarModalProducto()">✕</button>
+            <img id="modalProductoImagen" src="" alt="" class="modal-imagen">
+            <div class="modal-body">
+                <h2 id="modalProductoNombre"></h2>
+                <p class="modal-precio" id="modalProductoPrecio"></p>
+                <p id="modalProductoDescripcion"></p>
+                <button class="btn btn-primary btn-block" onclick="agregarDesdeModal()">
+                    🛍️ Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Carrito -->
+    <div class="modal" id="modalCarrito">
+        <div class="modal-overlay" onclick="cerrarCarrito()"></div>
+        <div class="modal-content modal-carrito">
+            <button class="modal-close" onclick="cerrarCarrito()">✕</button>
+            <h2>Tu Carrito</h2>
+            <div class="carrito-items" id="carritoItems">
+                <!-- Los items del carrito se generan con JavaScript -->
+            </div>
+            <div class="carrito-footer">
+                <div class="carrito-total">
+                    <span>Total:</span>
+                    <span id="carritoTotal">$0</span>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="procederCheckout()">
+                    Proceder al pago
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Contacto -->
+    <div class="modal" id="modalContacto">
+        <div class="modal-overlay" onclick="cerrarContacto()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="cerrarContacto()">✕</button>
+            <h2>Contáctanos</h2>
+            <form class="contacto-form" id="contactoForm" onsubmit="enviarFormulario(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notificaciones -->
+    <div class="notificaciones" id="notificaciones"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
